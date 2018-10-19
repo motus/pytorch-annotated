@@ -2,4 +2,4 @@
 
 A collection of python scritps and notebooks exploring individual components of PyTorch framework.
 
-e.g. see [MNIST example dissected](mnist/README.md)
+e.g. see [MNIST example dissected](mnist/)
