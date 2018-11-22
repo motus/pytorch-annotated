@@ -1,3 +1,5 @@
+/.vscode/
+
 # torchvision datasets cache
 /data/
 
