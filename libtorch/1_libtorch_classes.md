@@ -58,3 +58,27 @@ looks like this:
 Code generation is a stage in CMake. That is, one has to run the build to see the generated files. A
 Python script, `gen.py`, takes templates of C++ `.h` and `.cpp` files from `ATen/templates/`
 directory, and expands `${...}` placeholders with type- and backend-specific code (and comments!).
+
+There are _three_ mechanisms to generate code in PyTorch:
+
+* **cwrap**, or legacy, that creates Python bindings to TH and THC functions;
+* **native** (currently preferred), that binds Python code to C++ implementations;
+* **nn**, for generating NN-specific bindings, e.g., for loss and activation functons, convolutions,
+  pooling, etc.
+
+`gen.py` implements all three mechanisms, and dispatches to the right one depending on the input
+file name or extension. Metadata for the bindings is stored in the following files:
+
+* [ATen/Declarations.cwrap](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/Declarations.cwrap)
+  for **cwrap** bindings;
+* [ATen/native/native_functions.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/native_functions.yaml)
+  for **native** methods;
+* [ATen/nn.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/nn.yaml) for **nn**
+  operations;
+* [/tools/autograd/derivatives.yaml](https://github.com/pytorch/pytorch/blob/master/tools/autograd/derivatives.yaml)
+  derivatives for **native** and **nn** methods;
+
+[ATen/native/README.md](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
+has a very detailed explanation of the code generation process from PyTorch contributor's point of
+view (mostly covering the **native** method).
+
