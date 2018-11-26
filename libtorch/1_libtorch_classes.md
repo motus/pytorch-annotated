@@ -63,8 +63,8 @@ There are _three_ mechanisms to generate code in PyTorch:
 
 * **cwrap**, or legacy, that creates Python bindings to TH and THC functions;
 * **native** (currently preferred), that binds Python code to C++ implementations;
-* **nn**, for generating NN-specific bindings, e.g., for loss and activation functons, convolutions,
-  pooling, etc.
+* **nn**, for generating NN-specific bindings, e.g., for loss and activation functions,
+  convolutions, pooling, etc.
 
 `gen.py` implements all three mechanisms, and dispatches to the right one depending on the input
 file name or extension. Metadata for the bindings is stored in the following files:
@@ -76,9 +76,11 @@ file name or extension. Metadata for the bindings is stored in the following fil
 * [ATen/nn.yaml](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/nn.yaml) for **nn**
   operations;
 * [/tools/autograd/derivatives.yaml](https://github.com/pytorch/pytorch/blob/master/tools/autograd/derivatives.yaml)
-  derivatives for **native** and **nn** methods;
+  derivatives for **native** and **nn** methods.
 
 [ATen/native/README.md](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
 has a very detailed explanation of the code generation process from PyTorch contributor's point of
 view (mostly covering the **native** method).
 
+We will take a closer look at this metadata now and track a few methods from their implementation(s)
+to the corresponding Python bindings.
