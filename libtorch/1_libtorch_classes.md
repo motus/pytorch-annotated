@@ -81,6 +81,3 @@ file name or extension. Metadata for the bindings is stored in the following fil
 [ATen/native/README.md](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
 has a very detailed explanation of the code generation process from PyTorch contributor's point of
 view (mostly covering the **native** method).
-
-We will take a closer look at this metadata now and track a few methods from their implementation(s)
-to the corresponding Python bindings.
