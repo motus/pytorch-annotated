@@ -81,3 +81,10 @@ file name or extension. Metadata for the bindings is stored in the following fil
 [ATen/native/README.md](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/README.md)
 has a very detailed explanation of the code generation process from PyTorch contributor's point of
 view (mostly covering the **native** method).
+
+## Python integration
+
+C++ code for Python integration is in `torch/csrc/` directory. It has a
+[README.md](https://github.com/pytorch/pytorch/blob/master/torch/csrc/README.md) (mostly with
+information for PyTorch contributors).
+
